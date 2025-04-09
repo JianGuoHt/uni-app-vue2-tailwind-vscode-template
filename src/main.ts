@@ -1,9 +1,19 @@
-import uView from 'uview-ui';
 import Vue from 'vue';
 
 import App from './App.vue';
+import { setupInterceptors } from './interceptors';
+import { setupLibs } from './utils/libs';
 
-Vue.use(uView);
-Vue.config.productionTip = false;
+function bootstrap() {
+  Vue.config.productionTip = false;
 
-new App().$mount();
+  setupLibs(Vue);
+
+  setupInterceptors(Vue);
+
+  new Vue({
+    render: (h) => h(App),
+  }).$mount('#app');
+}
+
+bootstrap();

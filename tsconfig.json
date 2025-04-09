@@ -12,11 +12,22 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "@dcloudio/types", "miniprogram-api-typings", "mini-types"],
+    "noImplicitAny": false,
+    "types": [
+      "webpack-env",
+      "@dcloudio/types",
+      "miniprogram-api-typings",
+      "mini-types",
+      "z-paging/types",
+      "unplugin-vue2-script-setup/types"
+    ],
     "paths": {
       "@/*": ["./src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "vueCompilerOptions": {
+    "target": 2
   },
   "exclude": ["node_modules", "unpackage", "dist", "src/**/*.nvue"]
 }
