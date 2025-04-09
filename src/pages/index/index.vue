@@ -29,6 +29,11 @@
       {{ stringRequestData }}
       <button @click="() => runAsync()">重新发起请求</button>
     </view>
+    <!-- css 数字不换行 -->
+
+    <view class="mt-2 whitespace-break-spaces bg-blue-300">
+      <view v-for="(value, key) in env" :key="key">{{ key }}:{{ value }}</view>
+    </view>
 
     <view class="mt-2">
       <view class="ifdef-[MP-WEIXIN]:bg-blue-500 ifndef-[MP-WEIXIN]:bg-red-500">
@@ -57,6 +62,8 @@ console.log('🚀 ~ useIntervalFn:', useIntervalFn);
 const title = ref('Hello');
 
 const time = ref('');
+
+const env = ref(process.env);
 
 const apiHttp = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
