@@ -45,29 +45,33 @@
     "weapp:login": "weapp login",
     "upload:dev": "weapp upload -p dist/dev/mp-weixin -v 1.0.0 -d \"dev version\"",
     "upload:build": "weapp upload -p dist/build/mp-weixin -v 1.0.0 -d \"release version\"",
-    "postinstall": "weapp-tw patch"
+    "postinstall": "weapp-tw patch",
+    "prepare": "husky install",
+    "lint:eslint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --cache --fix",
+    "lint:prettier": "prettier --write ."
   },
   "dependencies": {
-    "@dcloudio/uni-app": "2.0.2-4040520250103001",
-    "@dcloudio/uni-app-plus": "2.0.2-4040520250103001",
-    "@dcloudio/uni-h5": "2.0.2-4040520250103001",
+    "@dcloudio/uni-app": "2.0.2-4050720250324001",
+    "@dcloudio/uni-app-plus": "2.0.2-4050720250324001",
+    "@dcloudio/uni-h5": "2.0.2-4050720250324001",
     "@dcloudio/uni-helper-json": "*",
-    "@dcloudio/uni-i18n": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-360": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-alipay": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-baidu": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-jd": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-kuaishou": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-lark": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-qq": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-toutiao": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-vue": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-weixin": "2.0.2-4040520250103001",
-    "@dcloudio/uni-mp-xhs": "2.0.2-4040520250103001",
-    "@dcloudio/uni-quickapp-native": "2.0.2-4040520250103001",
-    "@dcloudio/uni-quickapp-webview": "2.0.2-4040520250103001",
-    "@dcloudio/uni-stacktracey": "2.0.2-4040520250103001",
-    "@dcloudio/uni-stat": "2.0.2-4040520250103001",
+    "@dcloudio/uni-i18n": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-360": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-alipay": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-baidu": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-harmony": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-jd": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-kuaishou": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-lark": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-qq": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-toutiao": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-vue": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-weixin": "2.0.2-4050720250324001",
+    "@dcloudio/uni-mp-xhs": "2.0.2-4050720250324001",
+    "@dcloudio/uni-quickapp-native": "2.0.2-4050720250324001",
+    "@dcloudio/uni-quickapp-webview": "2.0.2-4050720250324001",
+    "@dcloudio/uni-stacktracey": "2.0.2-4050720250324001",
+    "@dcloudio/uni-stat": "2.0.2-4050720250324001",
     "@vue/shared": "^3.0.0",
     "core-js": "^3.39.0",
     "flyio": "^0.6.2",
@@ -77,6 +81,8 @@
     "vuex": "^3.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@babel/plugin-syntax-typescript": "^7.25.9",
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/runtime": "~7.26.0",
@@ -94,13 +100,32 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.8",
     "@vue/cli-service": "~5.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "babel-plugin-import": "^1.11.0",
+    "chalk": "4.1.2",
     "cross-env": "^7.0.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^1.24.1",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jsonc": "^2.16.0",
+    "eslint-plugin-markdown": "^3.0.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-vue": "^9.28.0",
+    "husky": "^8.0.3",
     "jest": "^25.4.0",
+    "koa": "^2.14.1",
+    "koa-static": "^5.0.0",
+    "lint-staged": "^13.1.1",
     "mini-types": "*",
     "miniprogram-api-typings": "3.12.2",
     "postcss-comment": "^2.0.0",
     "postcss-rem-to-responsive-pixel": "^6.0.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "sass": "^1.77.5",
     "sass-loader": "~14.2.1",
     "tailwindcss": "^3.4.17",
@@ -116,5 +141,27 @@
   ],
   "uni-app": {
     "scripts": {}
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{scss,html}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ],
+    "**/*.{vue,css,scss,html}": [
+      "stylelint --fix"
+    ]
   }
 }

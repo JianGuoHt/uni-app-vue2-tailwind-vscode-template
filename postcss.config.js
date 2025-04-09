@@ -1,32 +1,34 @@
-const path = require("path");
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const path = require('path');
 const webpack = require('webpack');
 
 const config = {
-  parser: require("postcss-comment"),
+  parser: require('postcss-comment'),
   plugins: [
-    require("postcss-import")({
+    require('postcss-import')({
       resolve(id, basedir, importOptions) {
-        if (id.startsWith("~@/")) {
+        if (id.startsWith('~@/')) {
           return path.resolve(process.env.UNI_INPUT_DIR, id.substr(3));
-        } else if (id.startsWith("@/")) {
+        } else if (id.startsWith('@/')) {
           return path.resolve(process.env.UNI_INPUT_DIR, id.substr(2));
-        } else if (id.startsWith("/") && !id.startsWith("//")) {
+        } else if (id.startsWith('/') && !id.startsWith('//')) {
           return path.resolve(process.env.UNI_INPUT_DIR, id.substr(1));
         }
         return id;
       },
     }),
-    require("autoprefixer")({
-      remove: process.env.UNI_PLATFORM !== "h5",
+    require('autoprefixer')({
+      remove: process.env.UNI_PLATFORM !== 'h5',
     }),
-    require("tailwindcss")({ config: "./tailwind.config.js" }),
+    require('tailwindcss')({ config: './tailwind.config.js' }),
     require('weapp-tailwindcss/css-macro/postcss'),
-    require("@dcloudio/vue-cli-plugin-uni/packages/postcss"),
+    require('@dcloudio/vue-cli-plugin-uni/packages/postcss'),
   ],
 };
 
 if (webpack.version[0] > 4) {
-  delete config.parser
+  delete config.parser;
 }
 
-module.exports = config
+module.exports = config;

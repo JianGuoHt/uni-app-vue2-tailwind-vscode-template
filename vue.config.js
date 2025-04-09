@@ -1,5 +1,5 @@
-const { WeappTailwindcssDisabled } = require("./platform");
-const { UnifiedWebpackPluginV5 } = require("weapp-tailwindcss/webpack");
+const { WeappTailwindcssDisabled } = require('./platform');
+const { UnifiedWebpackPluginV5 } = require('weapp-tailwindcss/webpack');
 
 /**
  * @type {import('@vue/cli-service').ProjectOptions}
@@ -16,9 +16,17 @@ const config = {
   },
   chainWebpack: (config) => {
     // 去除ts类型检测，因为uni-app ts type 支持其实不咋好
-    config.plugins.delete('fork-ts-checker')
+    config.plugins.delete('fork-ts-checker');
+    // 禁用 Prettier
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        options.prettify = false;
+        return options;
+      });
   },
-  transpileDependencies: ['uview-ui']
+  transpileDependencies: ['uview-ui'],
   //....
 };
 
